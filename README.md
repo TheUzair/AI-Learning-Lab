@@ -23,7 +23,3 @@ My journey toward AI Engineering through hands-on projects.
 - Groq API
 - Environment Variables
 - Conversation Memory
-
-## Learning Notes
-
-Documentation and study resources are available in the `docs` folder.

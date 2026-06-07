@@ -33,7 +33,7 @@ A simple command-line chatbot built with Python and the Groq API.
 ### Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/TheUzair/AI-Learning-Lab
 cd 01-cli-chatbot
 ```
 
@@ -85,4 +85,3 @@ Response from Groq API: Python is a high-level programming language used for web
 - Managing secrets using environment variables
 - Maintaining conversation state
 - Structuring Python projects
-- Using Git and GitHub for version control
