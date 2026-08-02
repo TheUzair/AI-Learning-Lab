@@ -21,3 +21,5 @@ docs/
 # OS files
 Thumbs.db
 .DS_Store
+
+01-cli-chatbot/data/chat_history.json
