@@ -19,6 +19,7 @@ This project represents Stage 2 of the AI Learning Lab, evolving from a simple c
   - [1. Backend Setup (FastAPI + UV)](#1-backend-setup-fastapi--uv)
   - [2. Frontend Setup (Next.js + PNPM)](#2-frontend-setup-nextjs--pnpm)
 - [Environment Variables](#-environment-variables)
+- [Cloud Deployment (Render & Vercel)](#-cloud-deployment-render--vercel)
 - [Key Engineering Concepts & Learnings](#-key-engineering-concepts--learnings)
 - [Contributing & License](#-author--license)
 
@@ -343,6 +344,17 @@ In React 19, synchronously calling `setState` inside the body of an effect trigg
 ### 3. Sliding Memory Windows
 
 LLMs are stateless by design. To maintain context while preventing unbounded memory consumption or token overflows, our memory system maintains a sliding window (`history[-10:]`), ensuring fast context retrieval and predictable payload sizes.
+
+---
+
+## 🌐 Cloud Deployment (Render & Vercel)
+
+The application is fully pre-configured for free one-click or guided cloud deployment:
+- **Backend (FastAPI on Render)**: Using the included [`render.yaml`](render.yaml) or a standard Python Web Service with `pip install -r requirements.txt` and `uvicorn web_chatbot.main:app --host 0.0.0.0 --port $PORT`.
+- **Frontend (Next.js on Vercel)**: Pointing root directory to `02-web-chatbot/frontend` with `NEXT_PUBLIC_API_URL` set to the Render backend URL.
+- **Dynamic CORS**: Automatically authorizes `*.vercel.app` deployments, `localhost`, and any custom domains passed via `FRONTEND_URL`.
+
+👉 For complete step-by-step instructions, see the dedicated [**Deployment Guide (`DEPLOYMENT.md`)**](DEPLOYMENT.md).
 
 ---
 

@@ -6,14 +6,20 @@ from web_chatbot.chatbot.memory import load_history, save_history
 
 app = FastAPI(title="Web Chatbot API")
 
+import os
+
+frontend_env = os.getenv("FRONTEND_URL", "")
+frontend_urls = [url.strip().rstrip("/") for url in frontend_env.split(",") if url.strip()]
+
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-]
+] + frontend_urls
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

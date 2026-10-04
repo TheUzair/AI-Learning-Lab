@@ -82,7 +82,7 @@ export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+  const API_BASE_URL = (process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000").replace(/\/+$/, "");
 
   // Check backend server status & fetch conversation history on mount
   useEffect(() => {
@@ -636,7 +636,7 @@ export default function Home() {
 
           <div className="flex items-center justify-between px-2 pt-2 text-[11px] text-zinc-500">
             <span>Model: gpt-oss-120b on Groq LPU</span>
-            <span>FastAPI Backend: 127.0.0.1:8000</span>
+            <span>FastAPI: {API_BASE_URL.replace(/^https?:\/\//, "")}</span>
           </div>
         </div>
       </footer>
