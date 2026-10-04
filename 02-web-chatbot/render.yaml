@@ -1,18 +1,123 @@
+# ==============================================================================
+# Render Blueprint Specification (render.yaml)
+# Docs: https://render.com/docs/blueprint-spec
+# ==============================================================================
+
 services:
+  # ----------------------------------------------------------------------------
+  # FastAPI Web Service
+  # ----------------------------------------------------------------------------
   - type: web
     name: web-chatbot-api
     runtime: python
+
+    # Region options: singapore (Asia/India), frankfurt (Europe), oregon (US West), ohio (US East), virginia (US East)
+    region: singapore
+
+    # Monorepo configuration: directory containing the service files
     rootDir: 02-web-chatbot
+
+    # Build & Start commands
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn web_chatbot.main:app --host 0.0.0.0 --port $PORT
+
+    # Health check: Render pings this endpoint to verify uptime before routing traffic
+    healthCheckPath: /
+
+    # Service tier: free, starter, standard, pro
     plan: free
+
+    # Automatically deploy on git push to the connected branch
     autoDeploy: true
+
+    # Monorepo build filters: only trigger a rebuild when backend-related files change
+    buildFilter:
+      paths:
+        - 02-web-chatbot/src/**
+        - 02-web-chatbot/requirements.txt
+        - 02-web-chatbot/pyproject.toml
+        - 02-web-chatbot/render.yaml
+      ignoredPaths:
+        - 02-web-chatbot/frontend/**
+        - 02-web-chatbot/README.md
+        - 02-web-chatbot/DEPLOYMENT.md
+
+    # Environment variables configuration
     envVars:
+      # Pinned Python runtime
       - key: PYTHON_VERSION
         value: 3.11.9
+
+      # Default Groq model running on LPU inference
       - key: GROQ_MODEL
         value: openai/gpt-oss-120b
+
+      # API Key: sync=false marks it as a secret prompt in the Render dashboard
       - key: GROQ_API_KEY
         sync: false
+
+      # Optional custom frontend domain (Vercel *.vercel.app is handled automatically via regex in main.py)
       - key: FRONTEND_URL
         sync: false
+
+    # --------------------------------------------------------------------------
+    # [REFERENCE / FUTURE USE] Persistent Disk Storage
+    # Useful if you store SQLite databases, vector indexes, or uploads that must
+    # survive container restarts. (Note: Persistent disks require a paid plan).
+    # --------------------------------------------------------------------------
+    # disk:
+    #   name: chatbot-data
+    #   mountPath: /data
+    #   sizeGB: 1
+
+    # --------------------------------------------------------------------------
+    # [REFERENCE / FUTURE USE] Custom Domains & Security Headers
+    # --------------------------------------------------------------------------
+    # domains:
+    #   - api.yourdomain.com
+    # headers:
+    #   - path: /*
+    #     name: X-Frame-Options
+    #     value: DENY
+
+# ==============================================================================
+# [REFERENCE / FUTURE USE] Managed PostgreSQL Database
+# Render can provision a PostgreSQL instance and automatically inject the
+# DATABASE_URL connection string into your web service above.
+# ==============================================================================
+# databases:
+#   - name: chatbot-postgres-db
+#     plan: free
+#     region: singapore
+#     databaseName: chatbot_db
+#     user: chatbot_user
+
+# ==============================================================================
+# [REFERENCE / FUTURE USE] Background Worker (Celery / RQ / Queues)
+# Workers run continuous background tasks without exposing an HTTP port.
+# ==============================================================================
+#   - type: worker
+#     name: chatbot-queue-worker
+#     runtime: python
+#     region: singapore
+#     rootDir: 02-web-chatbot
+#     buildCommand: pip install -r requirements.txt
+#     startCommand: celery -A tasks worker --loglevel=info
+#     plan: free
+#     envVars:
+#       - key: GROQ_API_KEY
+#         sync: false
+
+# ==============================================================================
+# [REFERENCE / FUTURE USE] Scheduled Cron Job
+# Runs periodic batch tasks (e.g. nightly cleanup, data scraping, log archiving).
+# ==============================================================================
+#   - type: cron
+#     name: nightly-history-cleanup
+#     runtime: python
+#     region: singapore
+#     rootDir: 02-web-chatbot
+#     schedule: "0 0 * * *"   # Cron expression: every midnight UTC
+#     buildCommand: pip install -r requirements.txt
+#     startCommand: python -m web_chatbot.scripts.cleanup
+#     plan: free
