@@ -6,32 +6,35 @@ A structured, hands-on journey toward AI Engineering — progressing from core P
 
 ## 🗺️ Project Roadmap
 
-| # | Project | Description | Tech Stack | Status |
-| :--- | :--- | :--- | :--- | :--- |
-| **00** | [**Setup & Python Basics**](00-setup-and-python-basics/) | Tooling setup, modern environment configuration, and Python fundamentals | Python, VS Code, Git | **Complete** |
-| **01** | [**CLI Chatbot**](01-cli-chatbot/) | Interactive terminal chatbot with conversation memory and LLM integration | Python, Groq API, `python-dotenv` | **Complete** |
-| **02** | [**Web Chatbot**](02-web-chatbot/) | Full-stack conversational AI with dark glassmorphic UI, streaming feedback & rich markdown | FastAPI, Next.js 16, React 19, Tailwind v4, Groq LPU, UV | **Complete** |
-| **03** | [**Data Explorer**](03-data-explorer/) | Exploratory data analysis, visualization, and preprocessing for ML datasets | Pandas, NumPy, Matplotlib, Seaborn | *Planned* |
-| **04** | [**ML API**](04-ml-api/) | Training classical machine learning models and deploying prediction endpoints | Scikit-Learn, FastAPI, Docker | *Planned* |
-| **05** | [**Micrograd**](05-micrograd/) | Building an autograd engine and neural network framework from scratch | Pure Python, Math, Backpropagation | *Planned* |
-| **06** | [**Makemore**](06-makemore/) | Character-level language model implementation (Bigram, MLP, RNN, Transformer) | PyTorch, Neural Networks | *Planned* |
-| **07** | [**Hugging Face Sentiment**](07-hf-sentiment/) | Fine-tuning and deploying transformer models for NLP sentiment analysis | Transformers, Hugging Face, PyTorch | *Planned* |
+| #      | Project                                                  | Description                                                                                | Tech Stack                                               | Status       |
+| :----- | :------------------------------------------------------- | :----------------------------------------------------------------------------------------- | :------------------------------------------------------- | :----------- |
+| **00** | [**Setup & Python Basics**](00-setup-and-python-basics/) | Tooling setup, modern environment configuration, and Python fundamentals                   | Python, VS Code, Git                                     | **Complete** |
+| **01** | [**CLI Chatbot**](01-cli-chatbot/)                       | Interactive terminal chatbot with conversation memory and LLM integration                  | Python, Groq API, `python-dotenv`                        | **Complete** |
+| **02** | [**Web Chatbot**](02-web-chatbot/)                       | Full-stack conversational AI with dark glassmorphic UI, streaming feedback & rich markdown | FastAPI, Next.js 16, React 19, Tailwind v4, Groq LPU, UV | **Complete** |
+| **03** | [**Data Explorer**](03-data-explorer/)                   | Exploratory data analysis, visualization, and preprocessing for ML datasets                | Pandas, NumPy, Matplotlib, Seaborn                       | _Planned_    |
+| **04** | [**ML API**](04-ml-api/)                                 | Training classical machine learning models and deploying prediction endpoints              | Scikit-Learn, FastAPI, Docker                            | _Planned_    |
+| **05** | [**Micrograd**](05-micrograd/)                           | Building an autograd engine and neural network framework from scratch                      | Pure Python, Math, Backpropagation                       | _Planned_    |
+| **06** | [**Makemore**](06-makemore/)                             | Character-level language model implementation (Bigram, MLP, RNN, Transformer)              | PyTorch, Neural Networks                                 | _Planned_    |
+| **07** | [**Hugging Face Sentiment**](07-hf-sentiment/)           | Fine-tuning and deploying transformer models for NLP sentiment analysis                    | Transformers, Hugging Face, PyTorch                      | _Planned_    |
 
 ---
 
 ## 🚀 Completed Milestones
 
 ### 00 · Setup & Python Basics
+
 - Configured modern development workflow and virtual environments.
 - Practiced core Python constructs, functions, data structures, and script execution.
 
 ### 01 · CLI Chatbot
+
 - Built an interactive terminal-based AI assistant powered by the Groq API.
 - Implemented environment variable management using `python-dotenv`.
 - Designed conversational memory with sliding-window retention to maintain context across turns.
 - Handled graceful session exit commands (`exit`, `quit`, `bye`).
 
 ### 02 · Modern Web Chatbot (Nova AI)
+
 - **Full-Stack Architecture**: Decoupled high-performance **FastAPI** backend and **Next.js 16 (App Router)** frontend.
 - **Groq LPU Acceleration**: Ultra-low latency token generation using `openai/gpt-oss-120b`.
 - **Modern Glassmorphic UI**: Translucent dark theme built with React 19 and Tailwind CSS v4, featuring starter prompt cards, real-time generation stopwatch, and pulsing typing animations.
@@ -55,6 +58,7 @@ A structured, hands-on journey toward AI Engineering — progressing from core P
 ## 🏃 Quick Start Guide
 
 ### Running the CLI Chatbot (`01-cli-chatbot`)
+
 ```bash
 cd 01-cli-chatbot
 python -m venv .venv
@@ -67,6 +71,7 @@ python main.py
 ### Running the Web Chatbot (`02-web-chatbot`)
 
 1. **Backend (FastAPI)**:
+
    ```bash
    cd 02-web-chatbot
    cp .env.example .env # Add your GROQ_API_KEY
@@ -87,6 +92,6 @@ python main.py
 
 ## 👨‍💻 Author & License
 
-- **Author**: Uzair ([@TheUzair](https://github.com/TheUzair))
+- **Author**: Mohd Uzair ([@TheUzair](https://github.com/TheUzair))
 - **Repository**: [TheUzair/AI-Learning-Lab](https://github.com/TheUzair/AI-Learning-Lab)
 - **License**: MIT
