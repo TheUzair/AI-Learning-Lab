@@ -11,7 +11,7 @@ A structured, hands-on journey toward AI Engineering — progressing from core P
 | **00** | [**Setup & Python Basics**](00-setup-and-python-basics/) | Tooling setup, modern environment configuration, and Python fundamentals                   | Python, VS Code, Git                                     | **Complete** |
 | **01** | [**CLI Chatbot**](01-cli-chatbot/)                       | Interactive terminal chatbot with conversation memory and LLM integration                  | Python, Groq API, `python-dotenv`                        | **Complete** |
 | **02** | [**Web Chatbot**](02-web-chatbot/)                       | Full-stack conversational AI with dark glassmorphic UI, streaming feedback & rich markdown | FastAPI, Next.js 16, React 19, Tailwind v4, Groq LPU, UV | **Complete** |
-| **03** | [**Data Explorer**](03-data-explorer/)                   | Exploratory data analysis, visualization, and preprocessing for ML datasets                | Pandas, NumPy, Matplotlib, Seaborn                       | _Planned_    |
+| **03** | [**Data Explorer**](03-data-explorer/)                   | Exploratory data analysis, visualization, and preprocessing for ML datasets                | Pandas, NumPy, Matplotlib, Seaborn, Scikit-Learn         | **Complete** |
 | **04** | [**ML API**](04-ml-api/)                                 | Training classical machine learning models and deploying prediction endpoints              | Scikit-Learn, FastAPI, Docker                            | _Planned_    |
 | **05** | [**Micrograd**](05-micrograd/)                           | Building an autograd engine and neural network framework from scratch                      | Pure Python, Math, Backpropagation                       | _Planned_    |
 | **06** | [**Makemore**](06-makemore/)                             | Character-level language model implementation (Bigram, MLP, RNN, Transformer)              | PyTorch, Neural Networks                                 | _Planned_    |
@@ -41,6 +41,14 @@ A structured, hands-on journey toward AI Engineering — progressing from core P
 - **Rich Markdown & Code**: Integrated `react-markdown` and `remark-gfm` with language-badged fenced code blocks and single-click copy buttons.
 - **Persistent Memory & Sync**: Server-side sliding-window memory saved to JSON, with automatic client history loading and clear chat support.
 - **Production-Grade API**: Type-safe Pydantic v2 schemas, W3C-compliant explicit CORS configuration, and interactive OpenAPI documentation at `/docs`.
+
+### 03 · Medical Insurance Data Explorer & ML Baseline
+
+- **Exploratory Data Analysis (EDA)**: Analyzed 1,338 records with demographic and health metrics, isolating smoking status and age as the primary cost drivers.
+- **Statistical Visualizations**: Plotted medical charge distribution (histogram/KDE), smoker variance (boxplot), and age vs charges multi-band interaction (scatterplot).
+- **Regression Modeling**: Trained a `LinearRegression` model achieving $R^2 = 0.784$ and $MAE = \$4,181.19$.
+- **Classification Modeling**: Built a `LogisticRegression` classifier detecting smoker status with $96.6\%$ accuracy, $0.92$ F1-score, and $0.94$ recall.
+- **Model Serialization**: Exported trained estimator as `insurance_model.joblib` for deployment in **Project 04 (FastAPI ML Service)**.
 
 ---
 
