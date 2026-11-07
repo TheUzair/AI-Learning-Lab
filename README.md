@@ -55,6 +55,7 @@ A structured, hands-on journey toward AI Engineering — progressing from core P
 ## 🛠️ Repository Tech Stack
 
 - **Languages**: Python 3.11+, TypeScript, JavaScript
+- **Data Science & ML**: Scikit-Learn, Pandas, NumPy, Matplotlib, Seaborn, Joblib, Jupyter / IPyKernel
 - **Frameworks & Libraries**: FastAPI, Next.js 16, React 19, Tailwind CSS v4, Pydantic v2
 - **AI / LLM Providers**: Groq Cloud API (LPU Inference Engine)
 - **Package & Project Managers**: `uv` (Python), `pnpm` (Node.js)
@@ -95,6 +96,15 @@ python main.py
    pnpm run dev
    # Open http://localhost:3000 in your browser
    ```
+
+### Running the Data Explorer Notebook (`03-data-explorer`)
+
+```bash
+cd 03-data-explorer
+uv sync
+uv run python -m ipykernel install --user --name=03-data-explorer --display-name "Python (03-data-explorer)"
+# Open data_explorer.ipynb in your editor and select the "Python (03-data-explorer)" kernel
+```
 
 ---
 
