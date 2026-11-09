@@ -18,12 +18,14 @@ dependencies = [
     "uvicorn[standard]>=0.54.0",
 ]
 
-[project.scripts]
-04-ml-api = "04_ml_api:main"
+[tool.uv]
+package = false
 
-[build-system]
-requires = ["uv_build>=0.12.0,<0.13.0"]
-build-backend = "uv_build"
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.2.0",
+]
 
 [dependency-groups]
 dev = [
